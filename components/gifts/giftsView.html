@@ -1,0 +1,17 @@
+<ons-page ng-controller="giftsController as gifts">
+    <ons-toolbar>
+        <div class="center">{{gifts.owner}}</div>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="right">
+            <ons-toolbar-button>
+                <ons-icon icon="fa-gift" ng-click="gifts.createNew();" style="font-size: 32px; width: 1em">
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <ons-list>
+        <ons-list-item modifier="tappable" ng-repeat="gift in gifts.giftList" ng-click="gifts.selectGift(gift.name);">
+            <span>{{gift.name}} - £{{gift.price}}</span>
+        </ons-list-item>
+    </ons-list>
+</ons-page>

@@ -1,0 +1,10 @@
+<ons-dialog cancelable ng-controller="newGiftController as ctrl">
+    <ons-toolbar inline>
+        <div class="center">Add Gift</div>
+    </ons-toolbar>
+    <form id="newGiftForm">
+        <p><input placeholder="Name" ng-model="ctrl.newGift.name" class="text-input" style="width:100%"></p>
+        <p><input placeholder="£" ng-model="ctrl.newGift.price" class="text-input" style="width:100%"></p>
+        <p><ons-button modifier="large" ng-click="ctrl.create()">Save</ons-button></p>
+    </form>
+</ons-dialog>

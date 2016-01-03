@@ -1,0 +1,26 @@
+{
+  "name": "giftstack",
+  "version": "1.0.0",
+  "description": "A gift-list shopping app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "giftstack"
+  ],
+  "author": "David Gill",
+  "license": "SEE LICENSE IN license.txt",
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "angular": "^1.4.8",
+    "onsenui": "^1.3.13"
+  }
+}

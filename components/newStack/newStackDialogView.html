@@ -1,0 +1,9 @@
+<ons-dialog cancelable ng-controller="newStackController as ctrl">
+    <ons-toolbar inline>
+        <div class="center">New Stack</div>
+    </ons-toolbar>
+    <form id="newStackForm">
+        <p><input placeholder="Name" ng-model="ctrl.newStack.ownerName" class="text-input" style="width:100%"></p>
+        <p><ons-button modifier="large" ng-click="ctrl.create()">Create</ons-button></p>
+    </form>
+</ons-dialog>

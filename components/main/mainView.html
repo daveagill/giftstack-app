@@ -1,0 +1,16 @@
+<ons-page ng-controller="stacksController as stacks">
+    <ons-toolbar>
+        <div class="center">GiftStack</div>
+        <div class="right">
+            <ons-toolbar-button>
+                <ons-icon icon="ion-plus-round" ng-click="stacks.createNew();" style="font-size: 32px; width: 1em">
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <ons-list>
+        <ons-list-item modifier="tappable" ng-repeat="stack in stacks.summaries" ng-click="stacks.select(stack.id);">
+            <span>{{stack.owner}} (has {{stack.numGifts()}} gifts)</span>
+        </ons-list-item>
+    </ons-list>
+</ons-page>
