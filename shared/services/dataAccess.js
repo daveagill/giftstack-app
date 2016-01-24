@@ -1,7 +1,9 @@
 "use strict";
 
 module.exports = function() {
-	var data = [
+	const LOCAL_STORAGE_KEY = "data";
+
+	/*var data = [
 		{
 			owner: "Dad",
 			gifts: [
@@ -10,17 +12,17 @@ module.exports = function() {
 					price: 20
 				},
 				{
-					name: "Ales",
+					name: "Beer",
 					price: 15
 				}
 			]
 		},
 		{
-			owner: "Bub",
+			owner: "Leah",
 			gifts: [
 				{
-					name: "Bublove",
-					price: 20
+					name: "iPad",
+					price: 400
 				},
 				{
 					name: "Chocolate Orange",
@@ -41,7 +43,14 @@ module.exports = function() {
 				}
 			]
 		}
-	];
+	];*/
+
+	// load data
+	var data = JSON.parse( localStorage.getItem(LOCAL_STORAGE_KEY) );
+
+	function saveData() {
+		localStorage.setItem( LOCAL_STORAGE_KEY, angular.toJson(data) );
+	}
 
 	var api = { };
 
@@ -58,6 +67,7 @@ module.exports = function() {
 			owner: ownerName,
 			gifts: []
 		});
+		saveData();
 	}
 
 	api.createGift = function(stackID, name, price) {
@@ -65,6 +75,7 @@ module.exports = function() {
 			name: name,
 			price: price
 		});
+		saveData();
 	}
 	
 	return api;
