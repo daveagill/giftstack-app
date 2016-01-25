@@ -46,7 +46,7 @@ module.exports = function() {
 	];*/
 
 	// load data
-	var data = JSON.parse( localStorage.getItem(LOCAL_STORAGE_KEY) );
+	var data = JSON.parse( localStorage.getItem(LOCAL_STORAGE_KEY) ) || [];
 
 	function saveData() {
 		localStorage.setItem( LOCAL_STORAGE_KEY, angular.toJson(data) );
