@@ -12,7 +12,7 @@ module.exports = function(dataAccess, runtimeState, pageNavigator) {
 		if (self.newGift !== null) {
 			dataAccess.createGift(stackID, self.newGift.name, self.newGift.price);
 		}
-		pageNavigator.hideNewGiftDialog();
+		pageNavigator.popView();
 	}
 
 };

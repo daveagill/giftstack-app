@@ -22,6 +22,6 @@ module.exports = function($scope, dataAccess, runtimeState, pageNavigator) {
 	};
 
 	this.createNew = function() {
-		pageNavigator.showNewStackDialog();
+		pageNavigator.pushNewStackView();
 	}
 };

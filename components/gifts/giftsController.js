@@ -11,6 +11,6 @@ module.exports = function(dataAccess, runtimeState, pageNavigator) {
 	};
 
 	this.createNew = function() {
-		pageNavigator.showNewGiftDialog();
+		pageNavigator.pushNewGiftView();
 	}
 };

@@ -1,0 +1,41 @@
+<ons-page ng-controller="newStackController as ctrl">
+    <ons-toolbar>
+        <div class="center">New Stack</div>
+        <div class="right">
+            <ons-toolbar-button ng-click="ctrl.cancel()">
+                <ons-icon icon="ion-close" style="font-size: 32px; width: 1em">
+            </ons-toolbar-button>
+            <ons-toolbar-button ng-click="ctrl.create()">
+                <ons-icon icon="ion-checkmark" style="font-size: 32px; width: 1em">
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item>
+            <input placeholder="Name" ng-model="ctrl.newStack.ownerName" class="text-input text-input--transparent" style="width:100%">
+        </ons-list-item>
+        <ons-list-item ng-click="ctrl.showOccasionChooser()">
+            {{ctrl.newStack.occasion}}
+        </ons-list-item>
+    </ons-list>
+
+    <ons-template id="chooseOccasion.dialog">
+        <ons-dialog cancelable>
+            <ons-toolbar inline>
+                <div class="center">Choose Occasion</div>
+            </ons-toolbar>
+            <ons-list>
+                <ons-list-item modifier="tappable" ng-click="ctrl.chooseOccasion('Christmas')">
+                    Christmas
+                </ons-list-item>
+                <ons-list-item modifier="tappable" ng-click="ctrl.chooseOccasion('Birthday')">
+                    Birthday
+                </ons-list-item>
+                <ons-list-item modifier="tappable" ng-click="ctrl.chooseOccasion('TODO')">
+                    Custom
+                </ons-list-item>
+            </ons-list>
+        </ons-dialog>
+    </ons-template>
+</ons-page>

@@ -3,21 +3,31 @@
 module.exports = function($rootScope) {
 	var onsNav = $rootScope.ui.navi;
 
-	var newStackDialog = null;
-	var newGiftDialog = null;
+	var currentDialog = null;
 
-	function showDialog(view, stasher) {
-		ons.createDialog(view).then(function(d) { stasher(d); d.show(); });
+	function showDialog(view) {
+		killDialog(); // only support 1 dialog at a time
+		ons.createDialog(view).then(function(d) { currentDialog = d; d.show(); });
+	}
+
+	function killDialog() {
+		if (currentDialog !== null) {
+			currentDialog.destroy();
+			currentDialog = null;
+			return true;
+		}
+		return false;
 	}
 
 	var api = { };
+	api.popView = function() {
+		if (!killDialog()) {
+			onsNav.popPage();
+		}
+	}
+
 	api.pushGiftsView = function() { onsNav.pushPage('views/gifts/giftsView.html'); };
-	api.pushGiftDetailView = function() {  };
-
-	api.showNewStackDialog = function() { showDialog('views/newStack/newStackDialogView.html', function(d) { newStackDialog = d; }); };
-	api.hideNewStackDialog = function() { newStackDialog.destroy(); newStackDialog = null; };
-
-	api.showNewGiftDialog = function() { showDialog('views/newGift/newGiftDialogView.html', function(d) { newGiftDialog = d; }); };
-	api.hideNewGiftDialog = function() { newGiftDialog.destroy(); newGiftDialog = null; };
+	api.pushNewStackView = function() { onsNav.pushPage('views/newStack/newStackView.html'); }
+	api.pushNewGiftView = function() { showDialog('views/newGift/newGiftDialogView.html'); };
 	return api;
 };
