@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function($rootScope) {
+module.exports = function($rootScope, runtimeState) {
 	var onsNav = $rootScope.ui.navi;
 
 	var currentDialog = null;
@@ -18,6 +18,14 @@ module.exports = function($rootScope) {
 		}
 		return false;
 	}
+	
+	// per-page onPop event dispatcher
+	onsNav.on("prepop", function(event) {
+		var onPopCallback = event.leavePage.options.onPop;
+		if (onPopCallback !== undefined) {
+			onPopCallback();
+		}
+	});
 
 	var api = { };
 	api.popView = function() {
@@ -26,7 +34,13 @@ module.exports = function($rootScope) {
 		}
 	}
 
-	api.pushGiftsView = function() { onsNav.pushPage('views/gifts/giftsView.html'); };
+	api.pushGiftsView = function(stackID) {
+		onsNav.pushPage('views/gifts/giftsView.html', {
+			onPop: function() { runtimeState.selectList(null); }
+		});
+		runtimeState.selectList(stackID);
+	};
+		
 	api.pushNewStackView = function() { onsNav.pushPage('views/newStack/newStackView.html'); }
 	api.pushNewGiftView = function() { showDialog('views/newGift/newGiftDialogView.html'); };
 	return api;

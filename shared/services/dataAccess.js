@@ -58,7 +58,7 @@ module.exports = function() {
 		return data;
 	};
 
-	api.listGiftsForStack = function(stackID) {
+	api.getStack = function(stackID) {
 		return data[stackID];
 	};
 

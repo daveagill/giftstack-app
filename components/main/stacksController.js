@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function($scope, dataAccess, runtimeState, pageNavigator) {
+module.exports = function($scope, dataAccess, pageNavigator) {	
 	var ctrl = this;
 	this.summaries = [];
 
@@ -16,9 +16,8 @@ module.exports = function($scope, dataAccess, runtimeState, pageNavigator) {
 		}
 	);
 
-	this.select = function(listID) {
-		runtimeState.selectList(listID);
-		pageNavigator.pushGiftsView();
+	this.select = function(stackID) {
+		pageNavigator.pushGiftsView(stackID);
 	};
 
 	this.createNew = function() {

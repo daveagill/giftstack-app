@@ -1,7 +1,7 @@
 "use struct";
 
 module.exports = function(dataAccess, runtimeState, pageNavigator) {
-	var giftData = dataAccess.listGiftsForStack( runtimeState.getSelectedList() );
+	var giftData = dataAccess.getStack( runtimeState.getSelectedList() );
 
 	this.owner = giftData.owner;
 	this.giftList = giftData.gifts;
